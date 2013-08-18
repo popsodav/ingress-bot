@@ -20,7 +20,9 @@ Quick Start Guide:
 * See the --help and --man for the script for extra options
 * Install Oracle Java SDK
 * Run:  $ make
-* Run:  $ make run
+* Run:  $ make run > cheat.log
+If you want do know you Items and are on Linux run parser/parse.sh.
+There also is parser/parse2sql.sh, which will generate a HTML file and upload it vie FTP.
 
 Currently the bot will begin at the first location in the waypoint list, survey the surrounding area and attempt
 to acquire items from each portal in range. Then a timer will be set that will simulate the time it would take to
