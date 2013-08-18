@@ -40,3 +40,45 @@ To Do:
 * Improve google maps implementation to not reach non-api rate limit.
 * Add item drop functionality
 * Add multi account functionality
+
+GERMAN/DEUTSCH
+
+Author: Maome (Reilly Steele)
+
+Der Ingress Bot ist eine Java-implementierung von 'Ingress'.
+
+ACHTUNG: Du kannst gebannt werden, nutzte es auf eigenes Risiko,
+
+2 Dateien werden gebraucht:
+* authcookie: enthält die SACSID von m-dot-betaspike.appspot.com 
+* locations: enthält die Orte
+
+Schnellstartanleitung:
+
+* Melde dich mit deinem Googleaccount an und gehe im Browser zu  https://m-dot-betaspike.appspot.com/handshake
+* Lese den Cookie SACSID von https://m-dot-betaspike.appspot.com/handshake (z.B. firefox Einstellungen)
+* Kopiere den cookie in authcookie im Format SACSID=cookie
+* Führe im Terminal folgendes Kommando aus: sudo tcpdump -i eth0 host www.ingress.com -s 65535 -w portals.pcap 
+* Gehe in die Intelmap und zoome ein bisschen durch die Gegend, alle jetzt geladenen Portale werden später abgefarmt
+* Installiere "tshark"
+* Führe das aus: utils/portal\_list.pl portals.pcap > locations  
+* Installiere Oracle Java SDK
+* Fürhe "make"(ohne Gänsefüsschen) aus
+* Und danach: make run > cheat.log
+If you want do know you Items and are on Linux run parser/parse.sh.
+There also is parser/parse2sql.sh, which will generate a HTML file and upload it vie FTP.
+
+Currently the bot will begin at the first location in the waypoint list, survey the surrounding area and attempt
+to acquire items from each portal in range. Then a timer will be set that will simulate the time it would take to
+walk to the next location in the list. At this point the bot will send new location data to the server and again
+survey and attempt to acquire items from the portal ('hack' it) this loop continues until each waypoint has been
+visited. 
+
+To Do:
+* Error handling of valid (but error notifying) return json strings (ie "error":"TOO_SOON_BIG"
+* Create loop allowing the bot to run autonomously indefinitely without reaching portal burnout.
+* Create clientwrapper functions to allow bursting, linking, and deploying of and on portals.
+* Scan local chat for words related to current bot state or actions and enter silent cooldown period.
+* Improve google maps implementation to not reach non-api rate limit.
+* Add item drop functionality
+* Add multi account functionality
