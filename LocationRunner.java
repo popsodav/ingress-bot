@@ -21,7 +21,7 @@ public class LocationRunner{
         cw.printLocalHackablePortalNames();
         //cw.hackLocalPortals();
         
-        GUI gui = new GUI(cw.player, cw);
+        //GUI gui = new GUI(cw.player, cw);
         
         while( (curLine = br.readLine()) != null ){
         
@@ -39,7 +39,7 @@ public class LocationRunner{
             
             //get distance in meters
             Double dist = S2Wrapper.GreatEarthDistance(currentLocation, newLoc);
-            TransitHandler th = new TransitHandler(currentLocation, newLoc, gui);
+            TransitHandler th = new TransitHandler(currentLocation, newLoc);
             th.start();
             int waitTimeSeconds = (int) (dist/5.0);
             

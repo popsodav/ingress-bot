@@ -8,12 +8,12 @@ public class TransitHandler extends Thread{
     private double distance;
     private int secondsToCross;   
     
-    private GUI gui;
+    //private GUI gui;
     
-    public TransitHandler(S2LatLng currentLocation, S2LatLng destination, GUI gui){
+    public TransitHandler(S2LatLng currentLocation, S2LatLng destination){
         this.currentLocation = currentLocation;
         this.destination = destination;
-        this.gui = gui;
+        //this.gui = gui;
         
         this.distance = S2Wrapper.GreatEarthDistance(this.currentLocation, this.destination);
         this.secondsToCross = (int) (distance/5.0); //move at 5m/s
@@ -30,7 +30,7 @@ public class TransitHandler extends Thread{
             //move a bit
             currentLocation = S2LatLng.fromDegrees(startLat + (latChange * i) , startLng + (lngChange * i));
             //spawn an update thread
-            gui.updateLocation(currentLocation);
+            //gui.updateLocation(currentLocation);
             //sleep(1000)
             Thread.sleep(1000);
         }
