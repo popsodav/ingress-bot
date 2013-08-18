@@ -5,6 +5,8 @@ Author: Maome (Reilly Steele)
 
 Ingress Bot is a java desktop client for the Google game 'Ingress'.
 
+WARNING: You can be banned from Ingress if you use this BOT. Use it at you're own risk.
+
 Two files are required:
 * authcookie: contains your SACSID cookie from the m-dot-betaspike.appspot.com servers
 * locations: has a list of location information in GPS format indicating the waypoints to visit in order
