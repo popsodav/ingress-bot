@@ -43,7 +43,7 @@ To Do:
 
 GERMAN/DEUTSCH
 
-Author: Maome (Reilly Steele)
+Autor: Maome (Reilly Steele), radopi, theAdminBlagger
 
 Der Ingress Bot ist eine Java-implementierung von 'Ingress'.
 
