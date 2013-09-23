@@ -1,0 +1,1 @@
+java -jar ingress-bot.jar
