@@ -9,6 +9,14 @@ public class TransitHandler extends Thread{
     private int secondsToCross;   
     
     //private GUI gui;
+
+    public TransitHandler(Location loc1, Location loc2){
+        this.currentLocation = S2LatLng.fromDegrees(loc1.getLat(), loc1.getLng());
+        this.destination = S2LatLng.fromDegrees(loc2.getLat(), loc2.getLng());
+
+        this.distance = S2Wrapper.GreatEarthDistance(this.currentLocation, this.destination);
+        this.secondsToCross = (int) (distance/5.0); //move at 5m/s
+    }
     
     public TransitHandler(S2LatLng currentLocation, S2LatLng destination){
         this.currentLocation = currentLocation;

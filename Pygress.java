@@ -1,24 +1,24 @@
-import com.google.common.geometry.*;
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.util.Properties;
 
-public class Pygress{
+public class Pygress {
     static boolean debug = true;
 
     //how to get your authcookie
     //m-dot-betaspike.appspot.com/handshake
     //google log in with your account
     //check cookies from m-dot-betaspike.appspot.com for SACSID
+    private static String authCookie;
 
-    private static String authCookie;    
-    public static void main(String[] args) throws Exception{
-    
-        FileReader authCookieInputStream = new FileReader("authcookie");
-        BufferedReader br = new BufferedReader(authCookieInputStream);
-        authCookie = br.readLine();
-        br.close();
-        
+    public static void main(String[] args) throws Exception {
+
+        Properties prop = new Properties();
+        prop.load(new FileInputStream("config.properties"));
+        authCookie = "SACSID=" + prop.getProperty("AUTH");
+
         Player player = new Player();
-        
+
         ClientWrapper clientWrapper = new ClientWrapper(authCookie, player);
         clientWrapper.handshake();
         clientWrapper.getInventory();
@@ -26,11 +26,11 @@ public class Pygress{
 
         FileReader locationsFile = new FileReader("locations");
         LocationRunner locRunner = new LocationRunner(locationsFile, clientWrapper);
-        
+
         locRunner.run();
- 
+
         //clientWrapper.getInventory();
- 
+
         System.out.println("\n\n\ncomplete!\n\n");
         /*
         ClientWrapper clientWrapper = new ClientWrapper(authCookie);
@@ -105,9 +105,9 @@ public class Pygress{
         System.out.println("[" + ANSI_GREEN + "Successful" + ANSI_RESET + "] great earth distance selftest" + "\n");
     */
 
-        //long st = handshake();
+//long st = handshake();
 
-        //System.out.println(Integer.toHexString( Float.floatToIntBits((float) home.latDegrees())));
+//System.out.println(Integer.toHexString( Float.floatToIntBits((float) home.latDegrees())));
         /*
         BigInteger big = new BigInteger("f8b303b3",16);
         System.out.println((double) big.intValue()/1000000);
